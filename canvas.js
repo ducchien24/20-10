@@ -265,7 +265,7 @@
       targets: [leafOne, stickLine, leafTwo, leafS1, rose1, rose2, rose3, rose4],
       strokeDashoffset: [anime.setDashoffset, 0],
       easing: 'easeInOutCubic',
-      duration: 7000,
+      duration: 8000,
       begin: function (anim) {
           //Leaf One
           leafOne.setAttribute("stroke", "black");
