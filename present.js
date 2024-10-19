@@ -4,7 +4,6 @@
 // Các bạn muốn học lập trình thì tham gia Nhóm zalo tự học lập trình nhé: https://zalo.me/g/yhdkef092
 
 var to = nameGirl;
-var gift_url = giftUrl;
 var gift_image_url = giftImage || giftImageBase64;
 
 var nametag = document.getElementById("nametag");
@@ -18,15 +17,24 @@ function init() {
   document.querySelector('#card .content-card').innerHTML = `${contentCard}`;
   document.querySelector('#card .honey').setAttribute('src', `${giftImage}`);
 
+
+  document.querySelector('#rose .title-rose').innerHTML = `💘${titleCard}💘`;
+  document.querySelector('#letters .title-letters').innerHTML = `💘${titleCard}💘`;
   var _giftLink, 
       _giftImg;
+  var castle=document.querySelector('#castle')
+      var valentines = document.querySelector('.valentines');
+      var card = document.querySelector('.card');
   
-  if (gift_url) {
-    _giftLink = document.createElement("a");
-    _giftLink.href = gift_url;
-    _giftLink.target = "_blank";
-    presentImage.appendChild(_giftLink);
-  }
+      valentines.addEventListener('mouseenter', function () {
+          card.style.transition = 'top 0.6s'; // thời gian tương đương với 'slow'
+          card.style.top = '-90px';
+      });
+  
+      valentines.addEventListener('mouseleave', function () {
+          card.style.transition = 'top 0.6s'; // thời gian tương đương với 'slow'
+          card.style.top = '0';
+      });
   
   if (gift_image_url) {
     _giftImg = document.createElement("img");
@@ -37,10 +45,16 @@ function init() {
       presentImage.appendChild(_giftImg);
     }
   }
-    
+  castle.addEventListener("click", function(e){
+    document.getElementById('card').classList.add('card-show')
+    document.getElementById('letters').classList.remove('letters-show');
+  },false)
   present.addEventListener("click", function(e){
     present.classList.toggle("open");
-    document.getElementById('card').classList.add('card-show');
+    // document.getElementById('card').classList.add('card-show');
+    document.getElementById('rose').classList.add('rose-show');
+    document.getElementById('letters').classList.add('letters-show');
+    
   }, false);
   
   
