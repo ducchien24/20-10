@@ -18,7 +18,7 @@ function init() {
 
   document.querySelector("#rose .title-rose").innerHTML = `💘${titleCard}💘`;
   document.querySelector("#letters .title-letters").innerHTML = `💘${titleCard}💘`;
-  
+
   var _giftLink, _giftImg;
   var castle = document.querySelector("#castle");
   var valentines = document.querySelector(".valentines");
@@ -43,24 +43,66 @@ function init() {
       presentImage.appendChild(_giftImg);
     }
   }
-  castle.addEventListener(
-    "click",
-    function (e) {
-      document.getElementById("card").classList.add("card-show");
-      document.getElementById("letters").classList.remove("letters-show");
-    },
-    false
-  );
-  present.addEventListener(
-    "click",
-    function (e) {
-      present.classList.toggle("open");
-      // document.getElementById('card').classList.add('card-show');
-      document.getElementById("rose").classList.add("rose-show");
-      document.getElementById("letters").classList.add("letters-show");
-    },
-    false
-  );
+  function checkScreenSize() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    // Kiểm tra kích thước
+    if (width < 768) {
+      const rose =  document.getElementById("rose")
+      castle.addEventListener(
+        "click",
+        function (e) {
+          document.getElementById("card").classList.add("card-show");
+          document.getElementById("letters").classList.remove("letters-show");
+        },
+        false
+      );
+      rose.addEventListener( "click",
+        function (e) {
+          document.getElementById("letters").classList.add("letters-show");
+          // document.getElementById('card').classList.add('card-show');
+          rose.classList.remove("rose-show");
+          // document.getElementById("letters").classList.add("letters-show");
+        },
+        false
+      );
+      present.addEventListener(
+        "click",
+        function (e) {
+          present.classList.toggle("open");
+          // document.getElementById('card').classList.add('card-show');
+          rose.classList.add("rose-show");
+          // document.getElementById("letters").classList.add("letters-show");
+        },
+        false
+      );
+       
+    } else {
+    
+      castle.addEventListener(
+        "click",
+        function (e) {
+          document.getElementById("card").classList.add("card-show");
+          document.getElementById("letters").classList.remove("letters-show");
+        },
+        false
+      );
+      present.addEventListener(
+        "click",
+        function (e) {
+          present.classList.toggle("open");
+          // document.getElementById('card').classList.add('card-show');
+          document.getElementById("rose").classList.add("rose-show");
+          document.getElementById("letters").classList.add("letters-show");
+        },
+        false
+      );
+    }
+}
+
+// Gọi hàm kiểm tra kích thước ngay khi tải trang
+checkScreenSize();
 
   nametag.innerText = to;
 }
